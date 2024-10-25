@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+  font-family: "geist";
+  src: url(./fonts/GeistVF.woff);
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --cta-hover: #183B56;
+  --cta-btn: #003566;
+  --primary: #EDB043;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: geist;
+}
