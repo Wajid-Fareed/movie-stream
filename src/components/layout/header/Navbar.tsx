@@ -18,12 +18,10 @@ import { usePathname } from 'next/navigation'
 const Navbar = () => {
     const pathName = usePathname();
     const isActive = (href: string) => {
-        console.log(pathName)
-        console.log(href)
         if (pathName.startsWith(href)) {
-            return " text-cta border-cta animation-active ";
+            return " text-cta border-primarycolor animation-active ";
         }
-        return "text-black group-hover:text-cta group-hover:border-cta";
+        return "text-black group-hover:text-cta group-hover:border-primarycolor border-transparent";
     };
     return (
         <header className='w-full border-b shadow-sm'>
@@ -35,16 +33,16 @@ const Navbar = () => {
                     <nav>
                         <ul className='text-lg font-medium flex gap-8 items-center'>
                             <li className='group nav-item'>
-                                <Link href="/" className={`border-b-2 border-transparent nav-link ${isActive("/")}`}>Home</Link>
+                                <Link href="/" className={`border-b-2 nav-link ${isActive("/")}`}>Home</Link>
                             </li>
                             <li className='group nav-item'>
-                                <Link href="/" className={`border-b-2 border-transparent nav-link ${isActive("/movies")}`}>Movies</Link>
+                                <Link href="/" className={`border-b-2 nav-link ${isActive("/movies")}`}>Movies</Link>
                             </li>
                             <li className='group nav-item'>
-                                <Link href="/" className={`border-b-2 border-transparent nav-link ${isActive("/tv-series")}`}>Tv Series</Link>
+                                <Link href="/" className={`border-b-2 nav-link ${isActive("/tv-series")}`}>Tv Series</Link>
                             </li>
                             <li className='group nav-item'>
-                                <Link href="/" className={`border-b-2 border-transparent nav-link ${isActive("/top-rating")}`}>Top Rating</Link>
+                                <Link href="/" className={`border-b-2 nav-link ${isActive("/top-rating")}`}>Top Rating</Link>
                             </li>
                         </ul>
                     </nav>

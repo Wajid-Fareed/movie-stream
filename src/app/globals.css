@@ -98,6 +98,10 @@ body {
   opacity: 1;
 }
 
+.card-title{
+  background: linear-gradient(180deg,transparent,rgba(0,0,0,.65) 28%,rgba(0,0,0,.65));
+}
+
 @media screen and (max-width: 600px) {
   .heroSwiper .swiper-pagination-bullet{
     width: 30px;

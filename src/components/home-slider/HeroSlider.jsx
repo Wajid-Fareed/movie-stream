@@ -27,7 +27,7 @@ const HeroSlider = () => {
                     <SwiperSlide key={item.id}>
                         <div className="slide-content relative group">
                             <div>
-                                {item.imgUrl && <Image src={item.imgUrl.src} alt={item.title} className="w-full h-auto min-h-[170px] object-cover " />}
+                                {item.imgUrl && <Image src={item.imgUrl.src} alt={item.title} width={1550} height={400} className="w-full h-auto min-h-[170px] object-cover rounded-sm" />}
                             </div>
                             <div className='group-hover:opacity-100 opacity-0 transition-opacity duration-500 flex items-center absolute left-0 top-0 w-full h-full inset-0 z-10'>
                                 <div className='z-10 p-3 md:p-5 xl:p-10 w-[80%] xsm:w-3/4 mx-auto bg-[rgba(0,0,0,.7)] shadow-lg rounded-md'>
