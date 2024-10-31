@@ -36,7 +36,7 @@ const MovieDetail: React.FC<MovieProps> = ({ movieData, idmbId, videos }) => {
 
         const result = await response.json();
         setMovieStreamData(result);
-        console.log("Movie Streaming details:", result);
+        // console.log("Movie Streaming details:", result);
       } catch (error) {
         console.error("Fetch error Streaming:", error);
       }

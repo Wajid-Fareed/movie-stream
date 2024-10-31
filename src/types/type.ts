@@ -127,3 +127,16 @@ interface IGenreStreamMovie {
     name: string;
   }
   
+
+  export interface IUserData {
+    id?: number;
+    first_name?: string;
+    second_name?: string;
+    email?: string;
+    password?: string;
+  }
+
+  export interface IUserContext {
+    userData?: IUserData;
+    setUserData: React.Dispatch<React.SetStateAction<IUserData | undefined>>;
+  }
