@@ -5,18 +5,17 @@ import Image from 'next/image';
 import { FaPlay } from 'react-icons/fa';
 import { ICardTMDB, IStreamMovie, IVideo } from '@/types/type';
 import Link from 'next/link';
-
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 interface MovieProps {
   movieData?: ICardTMDB;
   idmbId?: string;
-  // popularCast: any[];
-  // directors: any[];
   videos: IVideo[];
 }
 
 const MovieDetail: React.FC<MovieProps> = ({ movieData, idmbId, videos }) => {
-  const [movieStreamData, setMovieStreamData] = useState<IStreamMovie | null>(null)
-  console.log(videos);
+  const [movieStreamData, setMovieStreamData] = useState<IStreamMovie | null>(null);
+  // console.log(videos , "videos")
   useEffect(() => {
     if (!idmbId) return;
 
@@ -36,7 +35,7 @@ const MovieDetail: React.FC<MovieProps> = ({ movieData, idmbId, videos }) => {
 
         const result = await response.json();
         setMovieStreamData(result);
-        console.log("Movie Streaming details:", result);
+        // console.log("Movie Streaming details:", result);
       } catch (error) {
         console.error("Fetch error Streaming:", error);
       }
@@ -45,14 +44,30 @@ const MovieDetail: React.FC<MovieProps> = ({ movieData, idmbId, videos }) => {
     fetchMovieDetails();
   }, [idmbId]);
 
-  const imageBaseUrl = 'https://image.tmdb.org/t/p/w500'
+  const handleWatchMovie = () => {
+    if (movieStreamData?.streamingOptions?.fr && movieStreamData.streamingOptions.fr.length > 0) {
+      const firstStreamingOption = movieStreamData.streamingOptions.fr[0];
+      window.open(firstStreamingOption.link, '_blank');
+    } else {
+      if (videos && videos.length > 0) {
+        const firstVideo = videos[0];
+        const videoUrl = `https://www.youtube.com/watch?v=${firstVideo.key}`;
+        window.open(videoUrl, '_blank');
+      } else {
+        alert("No streaming options or videos available.");
+      }
+    }
+  };
 
+
+  const imageBaseUrl = 'https://image.tmdb.org/t/p/original';
 
   return (
-    <Container className='py-5'>
-      {movieData && (
+    <Container className='pt-5'>
+      {movieData ? (
         <div>
-          <div className='relative group'>
+
+          <div className='relative group' onClick={handleWatchMovie}>
             {movieData.backdrop_path && (
               <Image
                 src={`${imageBaseUrl}${movieData.backdrop_path}`}
@@ -132,7 +147,7 @@ const MovieDetail: React.FC<MovieProps> = ({ movieData, idmbId, videos }) => {
                 <div className='flex items-center gap-3'>
                   <p className='font-medium'>Director: </p>
                   <span className='text-primarycolor'>
-                  {movieStreamData?.directors && movieStreamData.directors.length > 0 ? (
+                    {movieStreamData?.directors && movieStreamData.directors.length > 0 ? (
                       movieStreamData.directors.map((CastItem, index) => (
                         <span key={index}>
                           {typeof CastItem === "string" ? CastItem : CastItem.name}&nbsp;
@@ -153,7 +168,7 @@ const MovieDetail: React.FC<MovieProps> = ({ movieData, idmbId, videos }) => {
                 <div className='flex items-center gap-3'>
                   <p className='font-medium'>IMDb: </p>
                   <span className='text-primarycolor'>
-                    {movieData.vote_average}
+                    {movieData.vote_average.toFixed(1)}
                   </span>
                 </div>
                 <div className='flex items-center gap-3'>
@@ -184,7 +199,9 @@ const MovieDetail: React.FC<MovieProps> = ({ movieData, idmbId, videos }) => {
             </div>
           </div>
         </div>
-      )}
+      ) : (<SkeletonTheme baseColor="#e0e0e0" highlightColor="#f5f5f5">
+        <Skeleton className="w-full h-[170px] xsm2:h-[200px] xsm:h-[250px] xs:h-[300px] sm:h-[350px] md:h-[450px] lg:h-[550px] xl:h-[700px] rounded-sm" />
+      </SkeletonTheme>)}
     </Container>
   );
 };

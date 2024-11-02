@@ -11,7 +11,8 @@ const config: Config = {
   	extend: {
 		screens: {
 			xs: '480px',
-			xsm: '380px'
+			xsm: '380px',
+			xsm2: '350px'
 		},
 		fontSize: {
 			'9': '9px',
