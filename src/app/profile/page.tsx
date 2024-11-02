@@ -16,7 +16,6 @@ const ProfilePage = () => {
         </div>
         <div className="mt-6 text-center">
           <h2 className="text-2xl font-semibold text-gray-800">{userData?.first_name} {userData?.second_name}</h2>
-          <p className="text-gray-600">{userData?.email}</p>
         </div>
         <div className="mt-4 text-center">
           {/* <button className="px-4 py-2 bg-blue-500 text-white rounded-md shadow-sm hover:bg-blue-600 focus:outline-none">
@@ -26,6 +25,7 @@ const ProfilePage = () => {
         <div className="mt-8">
           <h3 className="text-lg font-medium text-gray-800">Account Details</h3>
           <ul className="mt-2 text-gray-600">
+            <li><span className="font-semibold">Email:</span> {userData?.email}</li>
             {/* <li><span className="font-semibold">Username:</span> {userData?.username}</li>
             <li><span className="font-semibold">Phone:</span> {userData?.phone}</li>
             <li><span className="font-semibold">Address:</span> {userData?.address}</li> */}

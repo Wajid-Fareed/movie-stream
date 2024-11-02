@@ -41,9 +41,9 @@ const Navbar = () => {
                             <li className='group nav-item'>
                                 <Link href="/" className={`border-b-2 nav-link ${isActive("/movies")}`}>Movies</Link>
                             </li>
-                            <li className='group nav-item'>
+                            {/* <li className='group nav-item'>
                                 <Link href="/" className={`border-b-2 nav-link ${isActive("/tv-series")}`}>Tv Series</Link>
-                            </li>
+                            </li> */}
                             <li className='group nav-item'>
                                 <Link href="/" className={`border-b-2 nav-link ${isActive("/top-rating")}`}>Top Rating</Link>
                             </li>
@@ -52,7 +52,7 @@ const Navbar = () => {
                 </div>
                 <div className='flex items-center gap-4'>
                     <form action="" className='relative hidden sm:block'>
-                        <input type="text" name='search' placeholder='Search movie or series' className='border rounded shadow-sm ps-3 pe-9 py-1 text-md w-64 focus:outline-none focus:ring focus:ring-cta' />
+                        <input type="text" name='search' placeholder='Search movies' className='border rounded shadow-sm ps-3 pe-9 py-1 text-md w-64 focus:outline-none focus:ring focus:ring-cta' />
                         <button type="submit"><IoMdSearch size={25} className='text-cta absolute top-1 right-2' /></button>
                     </form>
                     <button type="submit" className='sm:hidden'><IoMdSearch size={25} className='text-cta' /></button>
@@ -77,9 +77,9 @@ const Navbar = () => {
                                             <li className='group nav-item'>
                                                 <Link href="/" className={`border-b-2 border-transparent nav-link ${isActive("/movies")}`}>Movies</Link>
                                             </li>
-                                            <li className='group nav-item'>
+                                            {/* <li className='group nav-item'>
                                                 <Link href="/" className={`border-b-2 border-transparent nav-link ${isActive("/tv-series")}`}>Tv Series</Link>
-                                            </li>
+                                            </li> */}
                                             <li className='group nav-item'>
                                                 <Link href="/" className={`border-b-2 border-transparent nav-link ${isActive("/top-rating")}`}>Top Rating</Link>
                                             </li>
