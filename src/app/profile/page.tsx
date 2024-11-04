@@ -11,6 +11,8 @@ const ProfilePage = () => {
           <Image
             src="/path-to-profile-picture.jpg" 
             alt="User Profile"
+            width={300}
+            height={300}
             className="w-32 h-32 rounded-full border-4 border-gray-300"
           />
         </div>
